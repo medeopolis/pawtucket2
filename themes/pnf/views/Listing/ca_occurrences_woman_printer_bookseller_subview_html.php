@@ -46,7 +46,7 @@
 			if ($g_ui_locale == 'en_US'){
 				print "<h2>{$va_listing_info['displayName']}</h2>\n";
 			}else{
-				print "<H2>{$va_listing_info['displayName']}</H2>\n";	
+				print "<H2>Mujeres Impresoras & Libreras</H2>\n";	
 			
 			}		
 			if ($g_ui_locale == 'en_US'){			

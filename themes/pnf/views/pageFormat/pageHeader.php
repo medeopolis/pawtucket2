@@ -132,19 +132,19 @@ $( document ).ready(function() {
 							<li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-198"><?php print caNavLink($this->request, _t('Authority File: Printers, publishers, booksellers, bookstores'), '', '', 'Listing', 'printers');?></a></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('Authorship Issues'), '', '', 'Listing', 'authorship');?></a></li>
 							<li id="menu-item-444" class="menu-item menu-item-type-post_type menu-item-object-page"><?php print caNavLink($this->request, _t('Bibliography'), '', '', 'Listing', 'bibliography');?></li>
+<?php
+if($this->request->isLoggedIn()){
+?>					
+							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("Comedias Printed Outside of Spain"), '', '', 'Listing', 'printed_outside_spain');?></li>
+<?php
+}
+?>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('Dates of Printers & Booksellers'), '', '', 'Listing', 'printers_booksellers_dates');?></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('Glossary'), '', '', 'Listing', 'glossary');?></li>		
 							<li id="menu-item-199" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-199"><?php print caNavLink($this->request, _t('Institutions'), '', '', 'Browse', 'collections');?></li>													
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('Miscellany'), '', '', 'Listing', 'miscellanies');?></li>							
 							<li id="menu-item-444" class="menu-item menu-item-type-post_type menu-item-object-page"><?php print caNavLink($this->request, _t('Modernized editions of plays'), '', '', 'Listing', 'modern_editions');?></li>
-							<li id="menu-item-200" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-200"><a href="/lists/us-catalogs/"><?php print _t('Printed catalogs of Spanish drama & comedias sueltas');?></a></li>						
-<?php
-if($this->request->isLoggedIn()){
-?>					
-							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("Printed Outside of Spain"), '', '', 'Listing', 'printed_outside_spain');?></li>
-<?php
-}
-?>							
+							<li id="menu-item-200" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-200"><a href="/lists/us-catalogs/"><?php print _t('Printed catalogs of Spanish drama & comedias sueltas');?></a></li>													
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('Titles modernized'), '', '', 'Listing', 'ccssusa');?></li>						
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("Translations and Adaptations from Foreign Literatures"), '', '', 'Listing', 'translations_foreign_literatures');?></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.comediassueltasusa.org/other-websites-of-interest/"><?php print _t('Websites of Interest');?></a></li>
@@ -189,6 +189,13 @@ if($this->request->isLoggedIn()){
 							<li id="menu-item-191" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-191"><?php print caNavLink($this->request, 'CATALOGO DE AUTORIDADES: AUTORES, TRADUCTORES, ADAPTADORES', '', '', 'Listing', 'playwrights'); ?></a></li>
 							<li id="menu-item-198" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-198"><?php print caNavLink($this->request, 'CATALOGO DE AUTORIDADES: IMPRESORES, LIBREROS, LIBRERIAS', '', '', 'Listing', 'printers');?></a></li>
 							<li id="menu-item-200" class="menu-item menu-item-type-post_type menu-item-object-lists menu-item-200"><a href="/lists/us-catalogs/">CATALOGOS IMPRESOS DE COLECCIONES DE COMEDIAS Y DE SUELTAS</a></li>						
+<?php
+if($this->request->isLoggedIn()){
+?>					
+							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("COMEDIAS IMPRESAS FUERA DE ESPAÑA"), '', '', 'Listing', 'printed_outside_spain');?></li>
+<?php
+}
+?>							
 							<li id="menu-item-444" class="menu-item menu-item-type-post_type menu-item-object-page"><?php print caNavLink($this->request, 'EDICIONES MODERNIZDAS DE COMEDIAS', '', '', 'Listing', 'modern_editions');?></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('FECHAS DE IMPRESORES Y LIBREROS'), '', '', 'Listing', 'printers_booksellers_dates');?></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, 'GLOSARIO', '', '', 'Listing', 'glossary');?></li>		
@@ -197,21 +204,15 @@ if($this->request->isLoggedIn()){
 <?php
 if($this->request->isLoggedIn()){
 ?>					
-							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("Printed Outside of Spain"), '', '', 'Listing', 'printed_outside_spain');?></li>
+							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("MUJERES IMPRESORAS & LIBRERAS"), '', '', 'Listing', 'women_printers_booksellers');?></li>
 <?php
 }
-?>							
+?>
 							<li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://www.comediassueltasusa.org/other-websites-of-interest/">PAGINAS WEB DE INTERES</a></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('PROBLEMAS DE AUTORIA'), '', '', 'Listing', 'authorship');?></a></li>
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, 'TITULOS MODERNIZADOS', '', '', 'Listing', 'ccssusa');?></li>						
 							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t('TRADUCCIONES Y ADAPTACIONES DE LITERATURAS EXTRANJERAS'), '', '', 'Listing', 'translations_foreign_literatures');?></li>
-<?php
-if($this->request->isLoggedIn()){
-?>					
-							<li class="menu-item menu-item-type-post_type menu-item-object-lists"><?php print caNavLink($this->request, _t("Women Printers & Booksellers"), '', '', 'Listing', 'women_printers_booksellers');?></li>
-<?php
-}
-?>							
+							
 						</ul>
 					</li>
 					<li id="menu-item-206" class="menu-item menu-item-type-post_type_archive menu-item-object-essays menu-item-206"><a href="/essays/"><?php print _t('Essays');?></a></li>

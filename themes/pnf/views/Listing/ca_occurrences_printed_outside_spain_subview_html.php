@@ -46,7 +46,7 @@
 			if ($g_ui_locale == 'en_US'){
 				print "<h2>{$va_listing_info['displayName']}</h2>\n";
 			}else{
-				print "<H2>{$va_listing_info['displayName']}</H2>\n";	
+				print "<H2>Comedias Impresas Fuera de España</H2>\n";	
 			
 			}		
 			if ($g_ui_locale == 'en_US'){			
@@ -97,15 +97,18 @@
 		if(!$qr_list) { continue; }
 		while($qr_list->nextHit()) {
 			$rows_by_language[$qr_list->get("ca_occurrences.pos_original_language")][] =  "<div class='row'>
-											<div class='col-sm-2 col-md-2'>".$qr_list->get('ca_occurrences.pos_place_publication')."</div>
+											<div class='col-sm-3 col-md-3'>".$qr_list->get('ca_occurrences.pos_place_publication')."</div>
 											<div class='col-sm-3 col-md-3'>".$qr_list->get('ca_occurrences.publication_description')."</div>
 											<div class='col-sm-3 col-md-3'>".$qr_list->get('ca_occurrences.preferred_labels')."</div>
-											<div class='col-sm-2 col-md-2'>".$qr_list->get('ca_occurrences.general_notes')."</div>
-											<div class='col-sm-2 col-md-2'>".$qr_list->get('ca_occurrences.pos_original_language')."</div>
+											<div class='col-sm-3 col-md-3'>".$qr_list->get('ca_occurrences.general_notes')."</div>
 									</div>";
 		}
 	}
-	$lang_titles = array("printed_americas" => "Printed in the Americas", "printed_europe" => "Printed in Europe (Excluding Spain)");
+	if($g_ui_locale == 'en_US'){
+		$lang_titles = array("printed_americas" => "Printed in the Americas", "printed_europe" => "Printed in Europe (Excluding Spain)");
+	}else{
+		$lang_titles = array("printed_americas" => "Impresas en las Américas", "printed_europe" => "Impresas en Europa (fuera de España)");
+	}
 	$langs = array_keys($rows_by_language);
 	print "<div class='listingSubHeading' style='padding-top:30px; color:#000;'>Show: ";
 	$lang_count = 0;
@@ -128,11 +131,10 @@
 			<div class='col-sm-12'>
 				<div style='padding:20px 10px 0px 10px;'>
 					<div class='row'>
-						<div class='col-sm-2 col-md-2 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "PlacePublication") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Place of Publication" : "Place of Publication"), "", "*", "*", "*", array("sort" => "PlacePublication")); ?></div>
+						<div class='col-sm-3 col-md-3 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "PlacePublication") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Place of Publication" : "Place of Publication"), "", "*", "*", "*", array("sort" => "PlacePublication")); ?></div>
 						<div class='col-sm-3 col-md-3 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "PrinterPublisherBookseller") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Printer, Publisher, Bookseller" : "Printer, Publisher, Bookseller"), "", "*", "*", "*", array("sort" => "PrinterPublisherBookseller")); ?></div>
 						<div class='col-sm-3 col-md-3 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "ImprintSuelta") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Imprint/Colophon Printed on Suelta" : "Imprint/Colophon Printed on Suelta"), "", "*", "*", "*", array("sort" => "ImprintSuelta")); ?></div>
-						<div class='col-sm-2 col-md-2 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "Notes") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Notes" : "Notes"), "", "*", "*", "*", array("sort" => "Notes")); ?></div>
-						<div class='col-sm-2 col-md-2 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "OriginalLanguage") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Original Language" : "Original Language"), "", "*", "*", "*", array("sort" => "OriginalLanguage")); ?></div>
+						<div class='col-sm-3 col-md-3 listingSubHeading' style='font-size: 17px;<?php print (($vs_current_sort == "Notes") ? " text-decoration:underline;" : ""); ?>'><?php print caNavLink($this->request, "<span class='glyphicon glyphicon-chevron-down' style='font-size:12px'></span> ".(($g_ui_locale == 'en_US') ? "Notes" : "Notes"), "", "*", "*", "*", array("sort" => "Notes")); ?></div>
 					</div>
 				</div>
 			</div>
