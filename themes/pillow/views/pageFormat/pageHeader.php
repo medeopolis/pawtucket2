@@ -28,6 +28,13 @@
 	$va_lightboxDisplayName = caGetLightboxDisplayName();
 	$vs_lightbox_sectionHeading = ucFirst($va_lightboxDisplayName["section_heading"]);
 	
+	$can_do_library_checkin = $can_do_library_checkout = $library_services_enabled = false;
+	if($this->request->isLoggedIn()) {
+		$can_do_library_checkin = $this->request->user->canDoAction('can_do_library_checkin');
+		$can_do_library_checkout = $this->request->user->canDoAction('can_do_library_checkout');
+		$library_services_enabled = $this->request->config->get('enable_library_services');
+	}
+	
 	# Collect the user links: they are output twice, once for toggle menu and once for nav
 	$va_user_links = array();
 	if($this->request->isLoggedIn()){
@@ -35,6 +42,11 @@
 		$va_user_links[] = '<li class="divider nav-divider"></li>';
 		if(caDisplayLightbox($this->request)){
 			$va_user_links[] = "<li>".caNavLink($this->request, $vs_lightbox_sectionHeading, '', '', 'Lightbox', 'Index', array())."</li>";
+		}
+		if($can_do_library_checkout) {
+			$va_user_links[] = "<li>".caNavLink($this->request, _t('My Loans'), '', 'Library', 'CheckOut', 'MyLoans', [])."</li>";
+			if($can_do_library_checkout) { $va_user_links[] = "<li>".caNavLink($this->request, _t("Borrow"), "", "Library", "CheckOut", "Index"); }
+			if($can_do_library_checkin) { $va_user_links[] = "<li>".caNavLink($this->request, _t("Return"), "", "Library", "CheckIn", "Index"); }
 		}
 
 		$va_user_links[] = "<li>".caNavLink($this->request, _t('User Profile'), '', '', 'LoginReg', 'profileForm', array())."</li>";
