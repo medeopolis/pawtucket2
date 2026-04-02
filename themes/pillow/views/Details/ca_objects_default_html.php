@@ -126,7 +126,7 @@ if($this->request->isLoggedIn() && $this->request->user->canDoAction('can_do_lib
 				switch($checkout_status = $t_object->getCheckoutStatus()) {
 					case __CA_OBJECTS_CHECKOUT_STATUS_OUT__:
 					case __CA_OBJECTS_CHECKOUT_STATUS_OUT_WITH_RESERVATIONS__:
-						print " with ".$checkout_info['user_name']."; due on ".$checkout_info['due_date'];
+						//print " with ".$checkout_info['user_name']."; due on ".$checkout_info['due_date'];
 						break;
 					case __CA_OBJECTS_CHECKOUT_STATUS_RESERVED__:
 						break;
