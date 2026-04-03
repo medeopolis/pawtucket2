@@ -24,21 +24,19 @@
  * http://www.CollectiveAccess.org
  *
  * ----------------------------------------------------------------------
- */
- 
-	$t_object = 			$this->getVar("item");
-	$va_comments = 			$this->getVar("comments");
-	$va_tags = 				$this->getVar("tags_array");
-	$vn_comments_enabled = 	$this->getVar("commentsEnabled");
-	$vn_share_enabled = 	$this->getVar("shareEnabled");
-	$vn_id = 				$t_object->get('ca_objects.object_id');
-	$va_access_values = caGetUserAccessValues($this->request);
-	$vn_object_id	=		$t_object->get('ca_objects.object_id');
-	
-	$t_list = new ca_lists();
-	$yes_list_value_id =  $t_list->getItemIDFromList('yes_no', 'yes');
-	$current_list_value_id =  $t_list->getItemIDFromList('current_previous', 'current');
+ */ 
+$t_object = 			$this->getVar("item");
+$va_comments = 			$this->getVar("comments");
+$va_tags = 				$this->getVar("tags_array");
+$vn_comments_enabled = 	$this->getVar("commentsEnabled");
+$vn_share_enabled = 	$this->getVar("shareEnabled");
+$vn_id = 				$t_object->get('ca_objects.object_id');
+$va_access_values = caGetUserAccessValues($this->request);
+$vn_object_id	=		$t_object->get('ca_objects.object_id');
 
+$t_list = new ca_lists();
+$yes_list_value_id =  $t_list->getItemIDFromList('yes_no', 'yes');
+$current_list_value_id =  $t_list->getItemIDFromList('current_previous', 'current');
 ?>
 <div class="container">
 	<div class="row">
@@ -81,7 +79,7 @@
 			$t_parent = new ca_objects($t_object->get('ca_objects.parent_id'));		
 			if ($vs_date = $t_object->get('ca_objects.display_date')) {
 				$vs_creation_date = $t_object->get('ca_objects.creation_date');
-				print "<div class='unit row'><div class='{$vn_label_col} label'>Date</div><div class='$vn_data_col'>".caNavLink($this->request, $vs_date, '', 'Search', 'artworks', "search/dates", ["values" => json_encode([preg_replace("![ ]*[\-–—][ ]*!u", "-", $vs_creation_date)])])."</div></div>";
+				print "<div class='unit row'><div class='{$vn_label_col} label'>Date</div><div class='$vn_data_col'>".caNavLink($this->request, $vs_date, '', 'Search', 'artworks', "search/dates", ["values" => json_encode([preg_replace("![ ]*[\-–—]+[ ]*!", "-", $vs_creation_date)])])."</div></div>";
 			}
 			$vn_med = 0;
 			if ($va_medium = $t_object->get('ca_objects.medium', array('returnWithStructure' => true))) {
