@@ -56,6 +56,25 @@ class MetaTagManager {
 	}
 	# --------------------------------------------------------------------------------
 	/**
+	 * Add <meta> tag to response that handles repeatable object metadata
+	 * This is sometimes needed for embedding meta tags with dublin core data
+	 * or other data required for harvesting
+	 *
+	 * @param $ps_tag_name (string) - name attribute of <meta> tag
+	 * @param $pa_content (array) - content array of <meta> tag
+	 * @return (bool) - Returns true if was successfully added, false if not
+	 */
+	static function addMetaData($ps_tag_name, $pa_content) {			
+		if (!is_array(MetaTagManager::$opa_tags)) { MetaTagManager::init(); }
+		if (!$ps_tag_name) { return false; }
+		if(!is_array($pa_content)) { return false; }
+
+		MetaTagManager::$opa_tags['meta_data'][$ps_tag_name] = $pa_content;
+		
+		return true;
+	}
+	# --------------------------------------------------------------------------------
+	/**
 	 * Add <meta> tag to response with property
 	 *
 	 * @param $ps_tag_property (string) - name attribute of <meta> tag
@@ -132,6 +151,13 @@ class MetaTagManager {
 			if (is_array(MetaTagManager::$opa_tags['meta'] ?? null) && sizeof(MetaTagManager::$opa_tags['meta'])) {	
 				foreach(MetaTagManager::$opa_tags['meta'] as $vs_tag_name => $vs_content) {
 					$vs_buf .= "<meta name='".htmlspecialchars($vs_tag_name, ENT_QUOTES)."' content='".htmlspecialchars($vs_content, ENT_QUOTES)."'/>\n";
+				}
+			}
+			if (is_array(MetaTagManager::$opa_tags['meta_data'] ?? null) && sizeof(MetaTagManager::$opa_tags['meta_data'])) {
+				foreach(MetaTagManager::$opa_tags['meta_data'] as $vs_tag_name => $va_content) {
+					foreach($va_content as $vs_content){
+						$vs_buf .= "<meta name='".htmlspecialchars($vs_tag_name, ENT_QUOTES)."' content='".htmlspecialchars($vs_content, ENT_QUOTES)."'/>\n";
+					}
 				}
 			}
 			if (is_array(MetaTagManager::$opa_tags['meta_property'] ?? null) && sizeof(MetaTagManager::$opa_tags['meta_property'])) {	
