@@ -988,12 +988,13 @@ trait CLIUtilsMaintenance {
 					'mimetype' => $mimetype
 				];
 			}
-			
+			$from_address = __CA_SMTP_EMAIL__ ?: __CA_ADMIN_EMAIL__;
+
 			if (sizeof($counts) > 0) {
 				if (!caSendMessageUsingView(
 					$o_request, 
 					[$email], 
-					[__CA_ADMIN_EMAIL__], 
+					[$from_address], 
 					_t('[%1] Media fixity report for %2', $a, $d = caGetLocalizedDate()), 
 					'check_media_fixity_report.tpl', 
 					['date' => $d, 'app_name' => $a, 'num_errors' => $errors, 'counts' => caMakeCommaListWithConjunction($counts)], 

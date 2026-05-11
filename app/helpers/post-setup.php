@@ -302,6 +302,14 @@ if (!defined("__CA_DEFAULT_THEME_CONFIG_DIRECTORY__")) {
 require_once(__CA_APP_DIR__.'/version.php');
 
 
+#
+#	Used as a reply to address in sent emails. 
+#	Should be set in setup.php, but setting here incase it's missed using the hostname of the site. 
+#
+if (!defined("__CA_ADMIN_EMAIL__")) {
+	define("__CA_ADMIN_EMAIL__", "info@".__CA_SITE_HOSTNAME__);
+}
+
 # --------------------------------------------------------------------------------------------
 # Email configuration
 #
@@ -331,6 +339,14 @@ if (!defined("__CA_SMTP_PORT__")) {
 #
 if (!defined("__CA_SMTP_AUTH__")) {
 	define("__CA_SMTP_AUTH__", '');
+}
+
+# __CA_SMTP_EMAIL__ = email address of the SMTP mailbox to use in 'from' address
+# This might be the same as __CA_SMTP_USER__
+# for backwards compatibility, set the __CA_SMTP_EMAIL__ to be __CA_ADMIN_EMAIL if not set
+#
+if (!defined("__CA_SMTP_EMAIL__")) {
+	define("__CA_SMTP_EMAIL__", __CA_ADMIN_EMAIL__);
 }
 
 # __CA_SMTP_USER__ = User name for outgoing mail authentication

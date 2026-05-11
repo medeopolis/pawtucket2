@@ -63,7 +63,6 @@ if (!defined("__CA_DB_DATABASE__")) {
 #
 if (!defined("__CA_APP_DISPLAY_NAME__")) {
 	define("__CA_APP_DISPLAY_NAME__", "My First CollectiveAccess System");
-}  define("__CA_LOG_DIR__", __CA_APP_DIR__."/log");
 }
 
 # __CA_ADMIN_EMAIL__ = the email address from which to send administrative messages
@@ -78,10 +77,21 @@ if (!defined("__CA_ADMIN_EMAIL__")) {
 # For CollectiveAccess to be able to send email notifications __CA_SMTP_SERVER__ and 
 # __CA_SMTP_PORT__ must be set. If your outgoing (SMTP) mail server requires you to 
 # authenticate, configure your login and connection details in  __CA_SMTP_AUTH__, 
-# __CA_SMTP_USER__, __CA_SMTP_PASSWORD__ and __CA_SMTP_SSL__
+# __CA_SMTP_USER__, __CA_SMTP_PASSWORD__ and __CA_SMTP_SSL__.
+#
+# if (!defined("__CA_SMTP_SERVER__")) {
+#	define("__CA_SMTP_SERVER___", "");
+# }
+# if (!defined("__CA_SMTP_PORT__")) {
+#	define("__CA_SMTP_PORT__", "");
+# }
 #
 # __CA_SMTP_AUTH__ = authentication method for outgoing mail connection (set to PLAIN, LOGIN, XOAUTH2 or CRAM-MD5; leave blank if no authentication is used.)
 # __CA_SMTP_SSL__ = SSL method to use for outgoing mail connection (set to SSL or TLS; leave blank if not authentication is used.)
+# __CA_SMTP_USER__ = username to authenticate to the SMTP server
+# __CA_SMTP_PASSWORD__ = password to authenticate to the SMTP server.
+# __CA_SMTP_EMAIL__ = the email address to send email from. This might be the same as __CA_SMTP_USER__ if the email address is used for authentication.
+# NB: The __CA_SMTP_EMAIL__ should at least be on the same domain as the authenticated mailbox, or the sent emails will be blocked as unsecure/spam on the recieving side.
 
 ## Extra SMTP XOAUTH2 Authentication settings: These settings must be set if __CA_SMTP_AUTH__ is set to XOAUTH2 (with exception of __CA_SMTP_XOAUTH2_AZURE_TENANTID, which is only needed if provider is Azure)
 # __CA_SMTP_XOAUTH_PROVIDER__ = Email provider: Might be Azure, Microsoft, Google or Yahoo. Only tested with Azure so far 
