@@ -6679,9 +6679,6 @@ function caGetCK5Toolbar(array $options=null) : ?array {
 		'undo' => ['code' => 'undo'],	
 		'redo' => ['code' => 'redo'],
 		'-' => ['code' => '|']
-
-		'undo' => ['code' => 'undo'],
-		'redo' => ['code' => 'redo']
 	];
 
 	$toolbar = $config->get(strtolower((caGetOption('type', $options, 'editor') )!== 'content') ? 'wysiwyg_editor_toolbar' : 'wysiwyg_content_editor_toolbar');
